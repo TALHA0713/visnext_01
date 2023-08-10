@@ -1,26 +1,13 @@
-import { Meta } from "../interfaces/Exception";
 
 class Exception extends Error {
   code: number;
-  meta: Meta;
+  reportError: boolean;
 
-  constructor(message: string, code: number = 500, meta: Meta = {}) {
+  constructor(message: string, code: number = 500, reportError = false) {
 
     super(message);
     this.code = code;
-    this.meta = meta;
-
-  }
-
-
-  toJson () {
-
-    const json = JSON.parse(JSON.stringify(this.meta || {}));
-
-    json.code = this.code;
-    json.message = this.message;
-
-    return json;
+    this.reportError = reportError;
 
   }
 

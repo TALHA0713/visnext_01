@@ -1,6 +1,6 @@
 class Validators {
 
-  static isValidStr (str: string) {
+  static isValidStr (str: string | undefined) {
 
     if (!str) {
 
@@ -23,6 +23,15 @@ class Validators {
     return defaultCode;
   
   }
+
+  static isValidateEmail (email: string) {
+
+    const re = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/im;
+
+    return re.test(String(email).toLowerCase());
+
+  }
+
 }
 
 export default Validators;

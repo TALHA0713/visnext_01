@@ -1,5 +1,5 @@
-import ProductUtil from './ProductUtil';
+import AuthUtil from "./AuthUtil"
 
 export {
-  ProductUtil
+  AuthUtil
 }

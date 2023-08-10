@@ -1,5 +1,5 @@
 import express from 'express';
-import ProductController from '../controller/ProductController';
+import authRouter from './auth';
 
 const router = express.Router();
 
@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
   res.send({ title: 'Show Case' });
 });
 
-router.get('/products', ProductController.getAllProducts)
+router.use('/api/v1', authRouter)
 
 export default router;
  
