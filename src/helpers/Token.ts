@@ -7,7 +7,7 @@ class Token {
   static getLoginToken (user: User) {
 
     let loginToken = jwt.sign({
-      id: user._id,
+      _id: user._id,
       email: user.email
     }, config.secretKey, {
       expiresIn: config.timeouts.login
@@ -20,7 +20,7 @@ class Token {
   static getRefreshToken (user: User) {
 
     let refreshToken = jwt.sign({
-      id: user._id,
+      _id: user._id,
       email: user.email
     }, config.secretKey, {
       expiresIn: config.timeouts.refreshToken

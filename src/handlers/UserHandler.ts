@@ -28,12 +28,11 @@ class UserHandler {
   }
 
   static getAuthenticateUser(userId: string, email = " ", authToken: string): Promise<any> {
-
     return User.findOne({
       email,
       _id: new mongoose.Types.ObjectId(userId),
-      access_token: authToken,
-    }).exec()
+      accessToken: authToken,
+    }).lean()
   }
 
   static setUserPassword(userId: string, password: string) {

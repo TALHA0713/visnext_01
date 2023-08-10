@@ -16,6 +16,8 @@ class Authentication {
 
       if (!Array.isArray(tokenSplitted) || tokenSplitted.length < 1) {
 
+        console.log(tokenSplitted?.length);
+
         console.log(`authenticate:: Token is invalid. token:: `, tokenSplitted);
 
         throw new Exception(UserConstants.MESSAGES.TOKEN_IS_INVALID_OR_EXPIRED, ErrorCodes.CONFLICT_WITH_CURRENT_STATE, true);
@@ -34,7 +36,20 @@ class Authentication {
 
       }
 
+
+
       const user: User = await UserHandler.getAuthenticateUser(decoded._id, decoded.email, token);
+
+
+      console.log('>>>>>>>>>>>>')
+      console.log('>>>>>>>>>>>>')
+      console.log('>>>>>>>>>>>>')
+      console.log('>>>>>>>>>>>>')
+      console.log('>>>>>>>>>>>>', user)
+      console.log('>>>>>>>>>>>>')
+      console.log('>>>>>>>>>>>>')
+      console.log('>>>>>>>>>>>>')
+      console.log('>>>>>>>>>>>>')
 
       if (!user) {
 

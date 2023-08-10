@@ -5,7 +5,7 @@
   },
   "secretKey": "secret",
   "timeouts": {
-    "login": "20000",
-    "refreshToken": "20000"
+    "login": "2h",
+    "refreshToken": "4h"
   }
 }

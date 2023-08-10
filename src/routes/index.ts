@@ -1,9 +1,10 @@
 import express from 'express';
 import authRouter from './auth';
+import { Authentication } from '../middleware';
 
 const router = express.Router();
 
-router.get('/', function (req, res, next) {
+router.get('/', Authentication.authenticate, (req, res, next) => {
   res.send({ title: 'Show Case' });
 });
 
