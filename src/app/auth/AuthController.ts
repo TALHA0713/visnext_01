@@ -51,8 +51,10 @@ class AuthController {
   }
 
   static async getUserDetails(req: UserRequest, res: Response) {
+    const { email } = req.user || {}
+
     try {
-      const user = await AuthManager.getUserDetails(req.user);
+      const user = await AuthManager.getUserDetails(email || '');
 
       res.json({
         success: true,

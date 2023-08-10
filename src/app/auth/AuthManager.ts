@@ -88,7 +88,7 @@ class AuthManager {
 
   }
 
-  static async getUserDetails({ email }: User) {
+  static async getUserDetails(email: string) {
     const user = await UserHandler.findUserByEmail(email);
 
     delete user.accessToken;

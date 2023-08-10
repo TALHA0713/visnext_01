@@ -5,8 +5,8 @@ import { LoginRequestBody, UserRequest } from '../../../interfaces/Auth';
 import { Exception } from '../../../helpers';
 import { ErrorCodes, UserConstants } from '../../../constants';
 
-jest.mock('../AuthManager'); // Mock the AuthManager
-jest.mock('../../../handlers/UserHandler'); // Mock the UserHandler
+jest.mock('../AuthManager'); 
+jest.mock('../../../handlers/UserHandler'); 
 
 describe('AuthController Tests', () => {
   afterEach(() => {
@@ -70,11 +70,8 @@ describe('AuthController Tests', () => {
         email: 'test@example.com',
       },
     };
-    const userDetails = {
-      _id: 'mockUserId',
-      name: 'Test User',
-      email: 'test@example.com',
-    };
+    const userDetails = 'test@example.com';
+
     mockGetUserDetails.mockResolvedValue(userDetails);
 
     const mockReq = userRequest as UserRequest;
@@ -82,7 +79,7 @@ describe('AuthController Tests', () => {
 
     await AuthController.getUserDetails(mockReq, mockRes);
 
-    expect(mockGetUserDetails).toHaveBeenCalledWith(userRequest.user);
+    expect(mockGetUserDetails).toHaveBeenCalledWith(userRequest.user.email || '');
     expect(mockRes.json).toHaveBeenCalledWith({
       success: true,
       data: userDetails,
@@ -102,7 +99,7 @@ describe('AuthController Tests', () => {
 
     await AuthController.getUserDetails(mockReq, mockRes);
 
-    expect(mockGetUserDetails).toHaveBeenCalledWith(mockReq.user);
+    expect(mockGetUserDetails).toHaveBeenCalledWith(mockReq.user || '');
     expect(mockRes.status).toHaveBeenCalledWith(ErrorCodes.INTERNAL_SERVER_ERROR);
     expect(mockRes.json).toHaveBeenCalledWith({
       success: false,

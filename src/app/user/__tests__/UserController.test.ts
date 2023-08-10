@@ -3,7 +3,8 @@ import { RandomUserResponse } from '../../../interfaces/User';
 import ApiClient from '../../../services/ThirdPartyService';
 import UserManager from '../UserManager';
 
-jest.mock('../../../services/ThirdPartyService'); // Mock the ApiClient
+jest.mock('../../../services/ThirdPartyService');
+
 const RANDOM_USER_API_URL = config.randomApiUrl
 
 describe('UserManager Tests', () => {

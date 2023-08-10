@@ -9,6 +9,10 @@ export interface User {
   refreshToken?: string;
 }
 
+export interface DecodedUser {
+  _id: string;
+  email: string;
+}
 export interface SignUpRequestBody {
   name?: string;
   email?: string;
@@ -21,5 +25,5 @@ export interface LoginRequestBody {
 }
 
 export interface UserRequest extends Request {
-  user: User
+  user?: User
 }

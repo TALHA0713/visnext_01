@@ -44,7 +44,6 @@ describe('AuthManager Tests', () => {
       setUserPassword: jest.spyOn(UserHandler, 'setUserPassword').mockResolvedValue({ nModified: 1 } as any),
     };
 
-    // Mock the methods on AuthUtil and AuthManager
     (AuthUtil.createHashedPassword as jest.Mock).mockResolvedValue('hashedPassword');
     (AuthManager.setAccessToken as jest.Mock).mockResolvedValue({
       ...createdUser,

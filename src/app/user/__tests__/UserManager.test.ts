@@ -1,7 +1,7 @@
 import axios from 'axios';
 import ApiClient from '../../../services/ThirdPartyService';
 
-jest.mock('axios'); // Mock the axios library
+jest.mock('axios');
 
 describe('ApiClient Tests', () => {
   afterEach(() => {

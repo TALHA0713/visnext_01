@@ -2,7 +2,7 @@ import mongoose, { Query } from 'mongoose';
 import UserHandler from '../UserHandler';
 import User from '../../models/User';
 
-jest.mock('../../models/User'); // Mock the User model
+jest.mock('../../models/User'); 
 
 describe('UserHandler Tests', () => {
   afterEach(() => {
@@ -35,7 +35,7 @@ describe('UserHandler Tests', () => {
 
   it('should set access token for a user', async () => {
     const mockUpdateOne = jest.spyOn(User, 'updateOne');
-    mockUpdateOne.mockResolvedValue({ nModified: 1 } as any); // Use "as any" here
+    mockUpdateOne.mockResolvedValue({ nModified: 1 } as any); 
     const userId = new mongoose.Types.ObjectId();
 
     await UserHandler.setAccessToken(userId.toJSON(), 'accessToken', 'refreshToken');
@@ -63,7 +63,7 @@ describe('UserHandler Tests', () => {
 
   it('should set password for a user', async () => {
     const mockUpdateOne = jest.spyOn(User, 'updateOne');
-    mockUpdateOne.mockResolvedValue({ nModified: 1 } as any); // Use "as any" here
+    mockUpdateOne.mockResolvedValue({ nModified: 1 } as any); 
     const userId = new mongoose.Types.ObjectId();
 
     await UserHandler.setUserPassword(userId.toJSON(), 'newPassword');
