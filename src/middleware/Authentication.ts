@@ -40,17 +40,6 @@ class Authentication {
 
       const user: User = await UserHandler.getAuthenticateUser(decoded._id, decoded.email, token);
 
-
-      console.log('>>>>>>>>>>>>')
-      console.log('>>>>>>>>>>>>')
-      console.log('>>>>>>>>>>>>')
-      console.log('>>>>>>>>>>>>')
-      console.log('>>>>>>>>>>>>', user)
-      console.log('>>>>>>>>>>>>')
-      console.log('>>>>>>>>>>>>')
-      console.log('>>>>>>>>>>>>')
-      console.log('>>>>>>>>>>>>')
-
       if (!user) {
 
         console.log(`authenticate:: Token is invalid, no user found. token:: ${token} decoded:: `, decoded);

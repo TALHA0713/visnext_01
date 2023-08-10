@@ -1,14 +1,14 @@
-import mongoose, { Document } from "mongoose";
-import { User as UserType } from "../interfaces/Auth";
+import mongoose from "mongoose";
+import { SignUpRequestBody } from "../interfaces/Auth";
 import User from "../models/User";
 
 class UserHandler {
 
-  static findUserByEmail(email: string): Promise<any> {
+  static findUserByEmail(email: string | undefined): Promise<any> {
     return User.findOne({ email }).lean()
   }
 
-  static createUser(data: UserType): Promise<any> {
+  static createUser(data: SignUpRequestBody): Promise<any> {
     const user = new User({
       ...data,
       _id: new mongoose.Types.ObjectId()

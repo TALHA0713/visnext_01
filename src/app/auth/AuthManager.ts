@@ -1,13 +1,13 @@
-import { ErrorCodes, UserConstants } from "../constants";
-import UserHandler from "../handlers/UserHandler";
-import { Exception, Token, Validators, bcrypt } from "../helpers";
-import { LoginRequestBody, User } from "../interfaces/Auth";
-import AuthUtil from "../utilities/AuthUtil";
+import { ErrorCodes, UserConstants } from "../../constants";
+import UserHandler from "../../handlers/UserHandler";
+import { Exception, Token, Validators, bcrypt } from "../../helpers";
+import { LoginRequestBody, SignUpRequestBody, User } from "../../interfaces/Auth";
+import AuthUtil from "../../utilities/AuthUtil";
 
 
 class AuthManager {
 
-  static async signup(data: User) {
+  static async signup(data: SignUpRequestBody) {
 
     console.log(`signup:: Request to signup user. data:: `, data);
 
@@ -53,7 +53,7 @@ class AuthManager {
 
     AuthUtil.validateUserToAuthenticate(user);
 
-    const passwordMatched = await bcrypt.compare(data.password, user.password);
+    const passwordMatched = await bcrypt.compare(data.password || '', user.password);
 
     if (!passwordMatched) {
 
@@ -86,6 +86,16 @@ class AuthManager {
 
     return { ...user, accessToken, refreshToken };
 
+  }
+
+  static async getUserDetails({ email }: User) {
+    const user = await UserHandler.findUserByEmail(email);
+
+    delete user.accessToken;
+    delete user.refreshToken;
+    delete user.password;
+
+    return user;
   }
 
 }

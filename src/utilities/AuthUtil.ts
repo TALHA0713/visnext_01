@@ -1,6 +1,6 @@
 import { ErrorCodes, UserConstants } from "../constants";
 import { Exception, Validators, bcrypt } from "../helpers";
-import { LoginRequestBody, User } from "../interfaces/Auth";
+import { LoginRequestBody, SignUpRequestBody, User } from "../interfaces/Auth";
 
 
 class AuthUtil {
@@ -17,7 +17,7 @@ class AuthUtil {
 
   }
 
-  static validateSignUpRequest(data: User) {
+  static validateSignUpRequest(data: SignUpRequestBody) {
 
     if (!data || !data.email) {
 

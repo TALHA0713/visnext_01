@@ -1,5 +1,4 @@
 import { Request } from "express";
-import mongoose from "mongoose";
 
 export interface User {
   _id?: string;
@@ -11,13 +10,14 @@ export interface User {
 }
 
 export interface SignUpRequestBody {
-  email: string;
-  password: string;
+  name?: string;
+  email?: string;
+  password?: string;
 }
 
 export interface LoginRequestBody {
-  email: string;
-  password: string;
+  email?: string;
+  password?: string;
 }
 
 export interface UserRequest extends Request {
