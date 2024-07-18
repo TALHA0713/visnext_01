@@ -10,8 +10,7 @@ class Authentication {
 
     try {
       const { authorization = '' } = req.headers;
-
-
+      // if req.header is empty then default value is ""  otherwise take value...
       const tokenSplitted = Validators.isValidStr(authorization) ? authorization.split(' ') : null;
 
       if (!Array.isArray(tokenSplitted) || tokenSplitted.length < 1) {

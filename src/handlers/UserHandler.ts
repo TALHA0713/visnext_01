@@ -6,6 +6,7 @@ class UserHandler {
 
   static findUserByEmail(email: string | undefined): Promise<any> {
     return User.findOne({ email }).lean()
+    //  .lean() converts the Mongoose documents into plain JavaScript objects. 
   }
 
   static createUser(data: SignUpRequestBody): Promise<any> {

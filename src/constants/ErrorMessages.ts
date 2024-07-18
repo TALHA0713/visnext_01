@@ -9,3 +9,7 @@ const ErrorMessages = Object.freeze({
 });
 
 export default ErrorMessages;
+
+// Object.freeze() is a powerful method in JavaScript for creating immutable objects. 
+// It is particularly useful for defining constants, preventing accidental modifications, 
+// and ensuring the integrity of objects in your application.
